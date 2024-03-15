@@ -1,0 +1,25 @@
+{% extends 'base.html' %}
+{% block title %}
+Все пользователи сайта
+{% endblock %}
+{% block body %}
+<div class="container mt-5">
+    <h1>Все пользователи сайта</h1>
+    {% if users|length>0 %}
+        {% for us in users %}
+        <div class="alert alert-info">
+            <h2>Имя: {{ us.name }}</h2>
+            <p>Возраст: {{ us.age }}</p>
+            <p>Город: {{ us.city }}</p>
+            <p><b>Дата: {{ us.date.date() }}</b></p>
+            <a href="/posts/{{ us.id }}" class="btn btn-warning">Подробнее</a>
+        </div>
+        {% endfor %}
+    {% else %}
+        <p>У нас еще нет пользователей сайтом</p>
+    {% endif %}
+</div>
+
+
+
+{% endblock %}
